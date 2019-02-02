@@ -8,15 +8,15 @@ app.listen('8888', () => {
     console.log("Listening on http://localhost:8888");
 });
 
+let temperature = 0;
+
 app.get('/api/temperature', (request, response) => {
-    let temperature = Math.floor(Math.random() * (30 - 20) + 20);
     response
         .status(200)
         .json({temperature})
         .end();
 });
 
-/*
 // waiting for issue : https://github.com/rwaldron/johnny-five/issues/1548
 const five = require("johnny-five");
 const board = new five.Board();
@@ -31,7 +31,7 @@ board.on("ready", function() {
         pin: 2
     });
     thermometer.on("change", function() {
-        console.log(this.celsius + "°C");
+        console.log(`[${new Date()}] New temperature received : ${this.celsius} °C`);
+        temperature = this.celsius;
     });
 });
-*/
