@@ -1,5 +1,4 @@
 const express = require("express");
-const http = require("http");
 
 const app = express();
 app.use('/', express.static('public'));
@@ -17,7 +16,6 @@ app.get('/api/temperature', (request, response) => {
         .end();
 });
 
-// waiting for issue : https://github.com/rwaldron/johnny-five/issues/1548
 const five = require("johnny-five");
 const board = new five.Board();
 
